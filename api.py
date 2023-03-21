@@ -20,6 +20,16 @@ async def create_user(user: User)->bool:
     except Exception as e:
         return {"message": str(e)}
     
+@user.post("/user/wallet_id")
+async def create_user(wallet_id: str)->bool:
+    try:
+        result = user_collection.insert_one({"wallet_id": wallet_id, "created_at": datetime.now()})
+        inserted_id = str(result.inserted_id) 
+        chad_id = inserted_id
+        update_result = user_collection.update_one({"_id": result.inserted_id}, {"$set": {"chad_id": chad_id }}).acknowledged  
+        return update_result
+    except Exception as e:
+        return {"message": str(e)}
 
 @user.put("/user/discord/{chad_id}")
 async def update_user_discord_Id(chad_id: str, discord_id:str):
