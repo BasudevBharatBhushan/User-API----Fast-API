@@ -4,7 +4,7 @@ from datetime import datetime
 from typing import Optional
 
 class User(BaseModel):
-    __slots__ = ("chad_id" , "wallet_id" , "discord_id" , "twitter_id" , "c3" , "created_at" , "updated_at")
+    # __slots__ = ("chad_id" , "wallet_id" , "discord_id" , "twitter_id" , "c3" , "created_at" , "updated_at")
     chad_id:str
     wallet_id:str
     discord_id:str
